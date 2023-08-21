@@ -1,7 +1,7 @@
 pipeline {
     agent any
     
-    enviroment {
+    environment {
         MONGODB_URI = credentials('mongodb-uri')
         TOKEN_KEY = credentials('token-key')
         EMAIL = credentials('email')
