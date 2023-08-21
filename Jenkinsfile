@@ -63,8 +63,8 @@ pipeline {
 
             
             steps {
-                sh 'docker build -t qriz1452/productivity-app-jenkins-mern-project:client client'
-                sh 'docker build -t qriz1452/productivity-app-jenkins-mern-project:server server'
+                sh 'docker build -t qriz1452/productivity-app-jenkins-mern-project:client-latest client'
+                sh 'docker build -t qriz1452/productivity-app-jenkins-mern-project:server-latest server'
                 
             }
         }
@@ -77,8 +77,8 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
                     sh 'docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD'
-		        	sh 'docker push -t qriz1452/productivity-app-jenkins-mern-project:client-latest'
-		        	sh 'docker push -t qriz1452/productivity-app-jenkins-mern-project:server-latest'
+		        	sh 'docker push  qriz1452/productivity-app-jenkins-mern-project:client-latest'
+		        	sh 'docker push  qriz1452/productivity-app-jenkins-mern-project:server-latest'
                 }
                 
             }
